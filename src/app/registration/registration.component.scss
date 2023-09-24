@@ -19,6 +19,11 @@ mat-card {
     margin-top: 20px;
     text-align: center;
   }
+
+  mat-card-subtitle {
+    text-align: center;
+    color: red;
+  }
 }
 
 form {
