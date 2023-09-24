@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { APP_CONSTANTS } from './app.constants';
 
 const routes: Routes = [
   {
@@ -10,7 +11,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'profile',
+    path: APP_CONSTANTS.ROUTES.profile,
     loadChildren: () =>
       import('./profile/profile.module').then((m) => m.ProfileModule),
   },
