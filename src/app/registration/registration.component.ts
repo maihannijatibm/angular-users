@@ -26,7 +26,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     bio: 256,
   };
 
-  isSubmitted: boolean = false;
+  isLoading: boolean = false;
 
   error: boolean = false;
 
@@ -67,8 +67,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     // <mat-form-field [ngClass]=".."
     this.form?.markAllAsTouched();
 
-    if (this.form?.valid) {
-      this.isSubmitted = true;
+    if (this.form?.valid && !this.isLoading) {
+      this.isLoading = true;
       this.error = false;
 
       const user: User = {
@@ -80,7 +80,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       const subscription = this.userService.create(user).subscribe({
         next: (result) => this.successHandler(result),
         error: (error) => this.errorHandler(error),
-        complete: () => (this.isSubmitted = false),
+        complete: () => (this.isLoading = false),
       });
 
       this.subscriptions.push(subscription);
