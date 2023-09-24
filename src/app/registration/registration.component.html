@@ -3,7 +3,7 @@
     <mat-card-title>User Registration</mat-card-title>
 
     <mat-card-content *ngIf="form">
-      <form [formGroup]="form">
+      <form [formGroup]="form" (submit)="onFormSubmit()">
         <mat-form-field
           [ngClass]="{
             'mb-15':
