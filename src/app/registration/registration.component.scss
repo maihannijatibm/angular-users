@@ -3,14 +3,17 @@ mat-card {
   border-radius: 0;
   box-shadow: none;
 
-  mat-card-title {
-    margin-top: 20px;
-    text-align: center;
-  }
+  mat-card-header {
+    display: block;
 
-  mat-card-subtitle {
-    text-align: center;
-    color: red;
+    mat-card-title {
+      text-align: center;
+    }
+
+    mat-card-subtitle {
+      text-align: center;
+      color: red;
+    }
   }
 }
 
