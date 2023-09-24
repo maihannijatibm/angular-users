@@ -1,1 +1,54 @@
-<p>registration works!</p>
+<div class="content-container">
+  <mat-card>
+    <mat-card-title>User Registration</mat-card-title>
+
+    <mat-card-content *ngIf="form">
+      <form [formGroup]="form">
+        <mat-form-field>
+          <mat-label>Full name</mat-label>
+          <input
+            matInput
+            [maxlength]="controlMaxLengths.name"
+            [formControlName]="controlNames.name"
+          />
+          <mat-error *ngIf="form.get(controlNames.name)?.hasError('required')"
+            >Enter your full name!</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Email address</mat-label>
+          <input
+            matInput
+            [maxlength]="controlMaxLengths.email"
+            [formControlName]="controlNames.email"
+            required
+          />
+          <mat-error *ngIf="form.get(controlNames.email)?.hasError('required')"
+            >Enter your email address!</mat-error
+          >
+          <mat-error *ngIf="form.get(controlNames.email)?.hasError('email')"
+            >Enter a valid email address!</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Biography</mat-label>
+          <textarea
+            matInput
+            rows="5"
+            [maxlength]="controlMaxLengths.bio"
+            [formControlName]="controlNames.bio"
+          ></textarea>
+          <mat-error *ngIf="form.get(controlNames.bio)?.hasError('required')"
+            >Enter your biography!</mat-error
+          >
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" [disabled]="form.invalid">
+          Submit
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
