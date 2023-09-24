@@ -6,9 +6,10 @@ import { StoreModule } from '@ngrx/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user.service';
+import { ThemeComponent } from './theme/theme.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ThemeComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
