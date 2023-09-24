@@ -4,7 +4,13 @@
 
     <mat-card-content *ngIf="form">
       <form [formGroup]="form">
-        <mat-form-field>
+        <mat-form-field
+          [ngClass]="{
+            'mb-15':
+              form.get(controlNames.name)?.touched &&
+              form.get(controlNames.name)?.invalid
+          }"
+        >
           <mat-label>Full name</mat-label>
           <input
             matInput
@@ -12,11 +18,17 @@
             [formControlName]="controlNames.name"
           />
           <mat-error *ngIf="form.get(controlNames.name)?.hasError('required')"
-            >Enter your full name!</mat-error
+            >Please provide your full name above!</mat-error
           >
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field
+          [ngClass]="{
+            'mb-15':
+              form.get(controlNames.email)?.touched &&
+              form.get(controlNames.email)?.invalid
+          }"
+        >
           <mat-label>Email address</mat-label>
           <input
             matInput
@@ -25,14 +37,20 @@
             required
           />
           <mat-error *ngIf="form.get(controlNames.email)?.hasError('required')"
-            >Enter your email address!</mat-error
+            >Please provide your email address above!</mat-error
           >
           <mat-error *ngIf="form.get(controlNames.email)?.hasError('email')"
-            >Enter a valid email address!</mat-error
+            >Please provide a valid email address above!</mat-error
           >
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
+        <mat-form-field
+          [ngClass]="{
+            'mb-15':
+              form.get(controlNames.bio)?.touched &&
+              form.get(controlNames.bio)?.invalid
+          }"
+        >
           <mat-label>Biography</mat-label>
           <textarea
             matInput
@@ -41,11 +59,11 @@
             [formControlName]="controlNames.bio"
           ></textarea>
           <mat-error *ngIf="form.get(controlNames.bio)?.hasError('required')"
-            >Enter your biography!</mat-error
+            >Please provide your biography above!</mat-error
           >
         </mat-form-field>
 
-        <button mat-raised-button color="primary" [disabled]="form.invalid">
+        <button mat-raised-button color="primary">
           Submit
         </button>
       </form>
