@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../services/user.service';
 import { User } from '../interfaces/user';
 import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { selectUserRegistration } from '../store/selectors/selectors';
 import { Router } from '@angular/router';
 import { APP_CONSTANTS } from '../app.constants';
+import * as UserActions from '../store/actions/actions';
 
 @Component({
   selector: 'app-registration',
@@ -30,16 +32,30 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
   error: boolean = false;
 
+  registration$ = this.store.select(selectUserRegistration);
+
   subscriptions: Subscription[] = [];
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private readonly userService: UserService,
-    private router: Router
+    private readonly store: Store,
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
     this.createForm();
+
+    const subscription = this.registration$.subscribe({
+      next: (result) => {
+        if (result.success) {
+          this.router.navigate([APP_CONSTANTS.ROUTES.profile]);
+        } else if (result.error) {
+          this.error = true;
+        }
+      },
+    });
+
+    this.subscriptions.push(subscription);
   }
 
   createForm() {
@@ -77,25 +93,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
         bio: this.form.get(this.controlNames.bio)?.value,
       };
 
-      const subscription = this.userService.create(user).subscribe({
-        next: (result) => this.successHandler(result),
-        error: (error) => this.errorHandler(error),
-        complete: () => (this.isLoading = false),
-      });
-
-      this.subscriptions.push(subscription);
+      this.store.dispatch(UserActions.createUser({ user }));
     }
-  }
-
-  successHandler(result: { success: boolean }): void {
-    if (result.success) {
-      this.router.navigate([APP_CONSTANTS.ROUTES.profile]);
-    }
-  }
-
-  errorHandler(error: any): void {
-    this.error = true;
-    console.log(error);
   }
 
   ngOnDestroy(): void {

@@ -4,11 +4,14 @@ import * as UserActions from '../actions/actions';
 
 export interface UserState {
   user?: User;
-  error: boolean;
+  registration: { success: boolean; error: boolean };
 }
 
 export const initialState: UserState = {
-  error: false,
+  registration: {
+    success: false,
+    error: false,
+  },
 };
 
 export const userReducer = createReducer(
@@ -16,5 +19,13 @@ export const userReducer = createReducer(
   on(UserActions.userRequestSuccess, (status, action) => ({
     ...status,
     user: action.user,
+  })),
+  on(UserActions.userRegistrationSuccess, (status, action) => ({
+    ...status,
+    registration: { success: action.success, error: false },
+  })),
+  on(UserActions.userRegistrationFailed, (status, action) => ({
+    ...status,
+    registration: { success: false, error: action.error },
   }))
 );
