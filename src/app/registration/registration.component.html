@@ -30,6 +30,25 @@
       <mat-form-field
         [ngClass]="{
           'mb-15':
+            form.get(controlNames.password)?.touched &&
+            form.get(controlNames.password)?.invalid
+        }"
+      >
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          [maxlength]="controlMaxLengths.password"
+          [formControlName]="controlNames.password"
+        />
+        <mat-error *ngIf="form.get(controlNames.password)?.hasError('required')">
+          Please provide your password above!
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field
+        [ngClass]="{
+          'mb-15':
             form.get(controlNames.email)?.touched &&
             form.get(controlNames.email)?.invalid
         }"

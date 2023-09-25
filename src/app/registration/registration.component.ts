@@ -18,12 +18,14 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
   controlNames = {
     name: 'name',
+    password: 'password',
     email: 'email',
     bio: 'bio',
   };
 
   controlMaxLengths = {
     name: 64,
+    password: 24,
     email: 64,
     bio: 256,
   };
@@ -67,6 +69,13 @@ export class RegistrationComponent implements OnInit, OnDestroy {
           Validators.maxLength(this.controlMaxLengths.name),
         ],
       ],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(this.controlMaxLengths.password),
+        ],
+      ],
       email: [
         '',
         [Validators.email, Validators.maxLength(this.controlMaxLengths.email)],
@@ -89,6 +98,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
       const user: User = {
         name: this.form.get(this.controlNames.name)?.value,
+        password: this.form.get(this.controlNames.password)?.value,
         email: this.form.get(this.controlNames.email)?.value,
         bio: this.form.get(this.controlNames.bio)?.value,
       };
