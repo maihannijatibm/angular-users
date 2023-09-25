@@ -13,6 +13,7 @@ export class UserService {
   create(user: User): Observable<any> {
     const params = new HttpParams()
       .set('name', user.name)
+      .set('password', user.password)
       .set('email', user.email)
       .set('bio', user.bio);
     return this.httpClient.get(APP_CONSTANTS.URLS.USER_REGISTRATION, {
