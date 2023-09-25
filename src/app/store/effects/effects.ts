@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { UserService } from 'src/app/services/user.service';
-import { catchError, concatMap, map, of } from 'rxjs';
+import { catchError, concatMap, map, of, tap } from 'rxjs';
 import { User } from 'src/app/interfaces/user';
 import * as UserActions from '../actions/actions';
+import { Router } from '@angular/router';
+import { APP_CONSTANTS } from 'src/app/app.constants';
 
 @Injectable()
 export class UserEffects {
   constructor(
     private readonly actions$: Actions,
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly router: Router
   ) {}
 
   createUser$ = createEffect(() =>
@@ -33,5 +36,14 @@ export class UserEffects {
       concatMap(() => this.userService.get()),
       map((user: User) => UserActions.userRequestSuccess({ user }))
     )
+  );
+
+  navigateUserRegistration$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(UserActions.navigateToRegistration),
+        tap(() => this.router.navigate([APP_CONSTANTS.ROUTES.registration]))
+      ),
+    { dispatch: false }
   );
 }

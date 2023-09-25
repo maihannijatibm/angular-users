@@ -22,3 +22,7 @@ export const userRequestSuccess = createAction(
   '[UserService getUser() API call] Get the user profile',
   props<{ user: User }>()
 );
+
+export const navigateToRegistration = createAction(
+  '[AuthGuard] Navigate to user registration'
+);
