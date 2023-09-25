@@ -10,6 +10,7 @@ import { ThemeComponent } from './theme/theme.component';
 import { userReducer } from './store/reducers/reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/effects/effects';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [AppComponent, ThemeComponent],
@@ -18,6 +19,7 @@ import { UserEffects } from './store/effects/effects';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    TranslateModule.forRoot(),
     StoreModule.forRoot({ user: userReducer }),
     EffectsModule.forRoot([UserEffects]),
   ],
