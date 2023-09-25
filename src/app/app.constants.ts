@@ -8,4 +8,8 @@ export const APP_CONSTANTS = {
     profile: 'profile',
     registration: '',
   },
+  LANGUAGES: {
+    en: 'en-CA',
+    fr: 'fr-CA',
+  },
 };

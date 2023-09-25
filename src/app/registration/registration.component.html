@@ -1,9 +1,9 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>User Registration</mat-card-title>
+    <mat-card-title>{{ "USER.REGISTRATION.TITLE" | translate }}</mat-card-title>
 
     <mat-card-subtitle *ngIf="error">
-      Something went wrong! Please try again later.
+      {{ "USER.REGISTRATION.ERROR.TEXT" | translate }}
     </mat-card-subtitle>
   </mat-card-header>
 
@@ -16,14 +16,14 @@
             form.get(controlNames.name)?.invalid
         }"
       >
-        <mat-label>Full name</mat-label>
+        <mat-label>{{ "USER.REGISTRATION.NAME.LABEL" | translate }}</mat-label>
         <input
           matInput
           [maxlength]="controlMaxLengths.name"
           [formControlName]="controlNames.name"
         />
         <mat-error *ngIf="form.get(controlNames.name)?.hasError('required')">
-          Please provide your full name above!
+          {{ "USER.REGISTRATION.NAME.REQUIRED.ERROR" | translate }}
         </mat-error>
       </mat-form-field>
 
@@ -34,15 +34,19 @@
             form.get(controlNames.password)?.invalid
         }"
       >
-        <mat-label>Password</mat-label>
+        <mat-label>{{
+          "USER.REGISTRATION.PASSWORD.LABEL" | translate
+        }}</mat-label>
         <input
           matInput
           type="password"
           [maxlength]="controlMaxLengths.password"
           [formControlName]="controlNames.password"
         />
-        <mat-error *ngIf="form.get(controlNames.password)?.hasError('required')">
-          Please provide your password above!
+        <mat-error
+          *ngIf="form.get(controlNames.password)?.hasError('required')"
+        >
+          {{ "USER.REGISTRATION.PASSWORD.REQUIRED.ERROR" | translate }}
         </mat-error>
       </mat-form-field>
 
@@ -53,7 +57,7 @@
             form.get(controlNames.email)?.invalid
         }"
       >
-        <mat-label>Email address</mat-label>
+        <mat-label>{{ "USER.REGISTRATION.EMAIL.LABEL" | translate }}</mat-label>
         <input
           matInput
           [maxlength]="controlMaxLengths.email"
@@ -61,10 +65,10 @@
           required
         />
         <mat-error *ngIf="form.get(controlNames.email)?.hasError('required')">
-          Please provide your email address above!
+          {{ "USER.REGISTRATION.EMAIL.REQUIRED.ERROR" | translate }}
         </mat-error>
         <mat-error *ngIf="form.get(controlNames.email)?.hasError('email')">
-          Please provide a valid email address above!
+          {{ "USER.REGISTRATION.EMAIL.INVALID.ERROR" | translate }}
         </mat-error>
       </mat-form-field>
 
@@ -75,7 +79,9 @@
             form.get(controlNames.bio)?.invalid
         }"
       >
-        <mat-label>Biography</mat-label>
+        <mat-label>{{
+          "USER.REGISTRATION.BIOGRAPHY.LABEL" | translate
+        }}</mat-label>
         <textarea
           matInput
           rows="5"
@@ -83,11 +89,13 @@
           [formControlName]="controlNames.bio"
         ></textarea>
         <mat-error *ngIf="form.get(controlNames.bio)?.hasError('required')">
-          Please provide your biography above!
+          {{ "USER.REGISTRATION.BIOGRAPHY.REQUIRED.ERROR" | translate }}
         </mat-error>
       </mat-form-field>
 
-      <button mat-raised-button color="primary">Submit</button>
+      <button mat-raised-button color="primary">
+        {{ "USER.REGISTRATION.SUBMIT.TEXT" | translate }}
+      </button>
     </form>
   </mat-card-content>
 </mat-card>
