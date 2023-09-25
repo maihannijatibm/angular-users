@@ -1,5 +1,8 @@
 <div class="content-container">
   <div class="mat-mdc-card content">
+    <button mat-button (click)="switchLanguage()">
+      {{ "USER.THEME.LANGUAGE.TO." + currentLang | translate }}
+    </button>
     <ng-content></ng-content>
   </div>
 </div>

@@ -10,5 +10,7 @@
   "USER.REGISTRATION.EMAIL.REQUIRED.ERROR": "Please provide your email address above!",
   "USER.REGISTRATION.BIOGRAPHY.REQUIRED.ERROR": "Please provide your biography above!",
   "USER.REGISTRATION.EMAIL.INVALID.ERROR": "Please provide a valid email address above!",
-  "USER.REGISTRATION.SUBMIT.TEXT": "Submit"
+  "USER.REGISTRATION.SUBMIT.TEXT": "Submit",
+  "USER.THEME.LANGUAGE.TO.fr-CA": "FR",
+  "USER.THEME.LANGUAGE.TO.en-CA": "EN"
 }

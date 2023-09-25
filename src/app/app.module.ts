@@ -12,6 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/effects/effects';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { MatButtonModule } from '@angular/material/button';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -34,6 +35,7 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     StoreModule.forRoot({ user: userReducer }),
     EffectsModule.forRoot([UserEffects]),
+    MatButtonModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent],

@@ -10,5 +10,7 @@
   "USER.REGISTRATION.EMAIL.REQUIRED.ERROR": "Veuillez indiquer votre adresse e-mail ci-dessus!",
   "USER.REGISTRATION.BIOGRAPHY.REQUIRED.ERROR": "Veuillez fournir votre biographie ci-dessus!",
   "USER.REGISTRATION.EMAIL.INVALID.ERROR": "Veuillez fournir une adresse e-mail valide ci-dessus!",
-  "USER.REGISTRATION.SUBMIT.TEXT": "Soumettre"
+  "USER.REGISTRATION.SUBMIT.TEXT": "Soumettre",
+  "USER.THEME.LANGUAGE.TO.fr-CA": "FR",
+  "USER.THEME.LANGUAGE.TO.en-CA": "EN"
 }
