@@ -84,7 +84,7 @@ describe('RegistrationComponent', () => {
 
     component.ngOnInit();
 
-    expect(navigateSpy).toHaveBeenCalledWith(['profile']);
+    expect(navigateSpy).toHaveBeenCalledWith([APP_CONSTANTS.ROUTES.profile]);
   });
 
   it('should dispatch createUser onFormSubmit', () => {
