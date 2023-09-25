@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { User } from '../interfaces/user';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { selectUser } from '../store/selectors/selectors';
 import * as UserActions from '../store/actions/actions';
 
@@ -13,7 +13,7 @@ import * as UserActions from '../store/actions/actions';
 export class ProfileComponent implements OnInit, OnDestroy {
   user?: User;
 
-  user$ = this.store.select(selectUser);
+  user$ = this.store.pipe(select(selectUser));
 
   subscriptions: Subscription[] = [];
 
