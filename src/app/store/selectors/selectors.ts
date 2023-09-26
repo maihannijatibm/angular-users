@@ -8,6 +8,9 @@ export const selectUser = createSelector(
   (state: UserState) => state.user
 );
 
+/**
+ * pass user registration state only from UserState
+ */
 export const selectUserRegistration = createSelector(
   selectUserState,
   (state: UserState) => state.registration

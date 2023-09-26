@@ -47,6 +47,9 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.createForm();
 
+    /**
+     * navigate user to the profile page on successful registration
+     */
     const subscription = this.registration$.subscribe({
       next: (result) => {
         if (result.success) {

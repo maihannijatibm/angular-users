@@ -15,6 +15,9 @@ export class UserEffects {
     private readonly router: Router
   ) {}
 
+  /**
+   * update state with registration state once user registration process ends
+   */
   createUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserActions.createUser),
@@ -30,6 +33,9 @@ export class UserEffects {
     )
   );
 
+  /**
+   * pass user receive from API to userRequestSuccess action
+   */
   getUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserActions.getUser),
@@ -38,6 +44,10 @@ export class UserEffects {
     )
   );
 
+  /**
+   * navigate user to the user registration page with navigateToRegistration action
+   * no need for dispatching an event as result of this effect
+   */
   navigateUserRegistration$ = createEffect(
     () =>
       this.actions$.pipe(

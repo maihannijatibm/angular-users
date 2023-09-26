@@ -9,6 +9,7 @@ import { APP_CONSTANTS } from './app.constants';
 })
 export class AppComponent {
   constructor(private translateService: TranslateService) {
+    // set language on first launch
     this.translateService.use(APP_CONSTANTS.LANGUAGES.en);
   }
 }

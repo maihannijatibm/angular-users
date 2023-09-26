@@ -10,6 +10,11 @@ import { User } from '../interfaces/user';
 export class UserService {
   constructor(private readonly httpClient: HttpClient) {}
 
+  /**
+   * pass parameters in URL as mock API only accepts GET call
+   * @param user 
+   * @returns 
+   */
   create(user: User): Observable<any> {
     const params = new HttpParams()
       .set('name', user.name)

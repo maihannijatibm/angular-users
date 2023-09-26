@@ -16,6 +16,9 @@ export class ThemeComponent {
     });
   }
 
+  /**
+   * switch language form en to fr and from fr to en
+   */
   switchLanguage(): void {
     if (this.translateService.currentLang === APP_CONSTANTS.LANGUAGES.en) {
       this.translateService.use(APP_CONSTANTS.LANGUAGES.fr);
